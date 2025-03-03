@@ -4,37 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace praktek2
+namespace Praktek2
 {
-    public static class GradeCalculator
+    class Program
     {
-        public static string GetGradeByScore(double studentScore)
+        public static int GetDaysPerMonth(int month, int year = 2023)
         {
-            string[] grade = { "A", "AB", "B", "BC", "C", "D", "E" };
-            double[] rangeLimit = { 80.0, 70.0, 65.0, 60.0, 50.0, 40.0, 0.0 };
-
-            string studentGrade = "E";
-
-          
-            for (int gradeLevel = 0; gradeLevel < grade.Length; gradeLevel++)
-            {
-                if (studentScore >= rangeLimit[gradeLevel])
-                {
-                    studentGrade = grade[gradeLevel];
-                    break;  
-                }
-            }
-
-            return studentGrade;
-        }
-        public static void Main(String[] args)
-        {
-            Console.Write("masukan nilai mahasiswa");
-            double score = Convert.ToDouble(Console.ReadLine());
-
-            string grade = GetGradeByScore(score);
-            Console.WriteLine($"Grade mahasiswa = {grade}");
+            int[] daysPerMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+            if (month == 2 && year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
+                return 29;
+            return daysPerMonth[month - 1];
         }
     }
 }
+
 
