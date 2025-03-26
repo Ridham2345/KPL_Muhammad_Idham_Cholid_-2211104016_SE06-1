@@ -1,0 +1,33 @@
+``using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Modul4_2211104016
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Masukkan nomor bulan (1-12): ");
+            int bulan = Convert.ToInt32(Console.ReadLine());
+
+            if (bulan >= 1 && bulan <= 12)
+            {
+                int hari = GetDaysPerMonth(bulan);
+                Console.WriteLine($"Jumlah hari di bulan {bulan}: {hari}");
+            }
+            else
+            {
+                Console.WriteLine("Bulan tidak valid! Masukkan nomor antara 1 dan 12.");
+            }
+        }
+
+        public static int GetDaysPerMonth(int bulan)
+        {
+            int[] hariPerBulan = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+            return hariPerBulan[bulan - 1];
+        }
+    }
+} ``
