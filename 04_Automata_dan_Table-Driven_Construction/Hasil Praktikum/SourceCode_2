@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Modul4_2211104016
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Masukkan nilai siswa (0-100): ");
+            double nilaiSiswa = Convert.ToDouble(Console.ReadLine());
+
+            if (nilaiSiswa >= 0 && nilaiSiswa <= 100)
+            {
+                string nilaiHuruf = GetGradeByScore(nilaiSiswa);
+                Console.WriteLine($"Nilai huruf untuk skor {nilaiSiswa}: {nilaiHuruf}");
+            }
+            else
+            {
+                Console.WriteLine("Nilai tidak valid! Masukkan angka antara 0 dan 100.");
+            }
+        }
+
+        public static string GetGradeByScore(double studentScore)
+        {
+            string[] grade = { "A", "AB", "B", "BC", "C", "D", "E" };
+            double[] rangeLimit = { 80.0, 70.0, 65.0, 60.0, 50.0, 40.0, 0.0 };
+            int maxGradeLevel = grade.Length - 1;
+            string studentGrade = "E";
+            int gradeLevel = 0;
+
+            while ((studentGrade == "E") && (gradeLevel < maxGradeLevel))
+            {
+                if (studentScore > rangeLimit[gradeLevel])
+                {
+                    studentGrade = grade[gradeLevel];
+                }
+                gradeLevel++;
+            }
+            return studentGrade;
+        }
+    }
+}
